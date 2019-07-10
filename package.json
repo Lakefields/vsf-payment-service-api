@@ -1,0 +1,14 @@
+{
+  "name": "@getnoticed/vsf-payment-getnoticed-mollie-api",
+  "version": "1.0.0",
+  "description": "Mollie Payment Vue Storefront API extenstion",
+  "main": "index.js",
+  "author": "Get.Noticed",
+  "license": "MIT",
+  "dependencies": {
+    "js-sha3": "^0.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
