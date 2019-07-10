@@ -38,11 +38,13 @@ Add the API extension to the registered extensions to `local/config.json`
     "api_key": "YOUR_MOLLIE_API_KEY",
     "api_url": "https://api.mollie.com",
     "secret": "__SECRET_CHANGE_ME__",
-    "webhook_url": "https://localhost:8080/api/ext/vsf-payment-getnoticed-mollie-api/webhook"
+    "webhook_url": "http://localhost:8080/api/ext/vsf-payment-getnoticed-mollie-api/webhook"
   }   
 }
 
 ```
+
+**NB:** for testing purposes use a reachable url. Mollie tries to connect to the webhook url before posting the payment. If you don't add a reachable url the payment is not created.
 
 **Make sure you add the correct config settings for your project.** Make sure to generate a proper secret value.
 
