@@ -12,7 +12,7 @@ Follow these steps to install this API extenstion to the Vue Storefront API.
 Clone this git repository from within your vue-storefront-api root folder
 
 ```shell
-git clone git@github.com/GetNoticedNL/vsf-payment-mollie-payments-api.git src/api/extensions/vsf-payment-getnoticed-mollie-api
+git clone git@github.com:GetNoticedNL/vsf-payment-mollie-payments-api.git src/api/extensions/vsf-payment-getnoticed-mollie-api
 ```
 
 **Run yarn to install dependencies**
