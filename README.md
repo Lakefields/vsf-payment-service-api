@@ -9,13 +9,13 @@ Follow these steps to install this API extenstion to the Vue Storefront API.
 
 **Requirements for Vue Storefront API**
 
-1. Clone this git repository from within your vue-storefront-api root folder
+Clone this git repository from within your vue-storefront-api root folder
 
 ```shell
 git clone git@github.com/GetNoticedNL/vsf-payment-mollie-payments-api.git src/api/extensions/vsf-payment-getnoticed-mollie-api
 ```
 
-1. **Run yarn to install dependencies**
+**Run yarn to install dependencies**
 
 # Register the Vue Storefront API extension
 Add the API extension to the registered extensions to `local/config.json`
