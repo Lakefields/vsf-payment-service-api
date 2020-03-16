@@ -1,12 +1,13 @@
+const config = require('config')
 import crypto from "crypto";
-import OrderLineTypes from "../helpers/OrderLineTypes"
-import ProductsMapping from "../helpers/ProductsMapping"
+import OrderLineTypes from "../../helpers/OrderLineTypes"
+import ProductsMapping from "../../helpers/ProductsMapping"
 import { Locale, PaymentMethod, OrderLineType } from '@mollie/api-client';
 
 export default (order: any, params: any) => {
 
-  let sectret_key = params.paymentServiceConfig.api_key
-  let algorithm = params.algorithm
+  let sectret_key = config.extensions.mollie.api_key
+  let algorithm = config.extensions.mollie.algorithm
 
   const locale: string = params.locale
   const paymentMethod: string = params.method
@@ -102,8 +103,8 @@ export default (order: any, params: any) => {
     metadata: order_metadata,
     locale: Locale[locale],
     orderNumber: order.increment_id,
-    redirectUrl: params.paymentServiceConfig.redirect_url + encryptedOrderDetails,
-    webhookUrl: params.paymentServiceConfig.webhook_url,
+    redirectUrl: config.extensions.mollie.redirect_url + encryptedOrderDetails,
+    webhookUrl: config.extensions.mollie.webhook_url,
     method: PaymentMethod[paymentMethod],
     lines: orderLines
   }

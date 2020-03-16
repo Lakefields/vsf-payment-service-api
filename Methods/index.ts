@@ -1,7 +1,7 @@
 import { apiStatus } from '../../../../lib/util'
 import createMollieClient, { List, Method, MethodInclude, Locale } from '@mollie/api-client';
 
-const paymentMethods = module.exports = ({config, db}) => async function (req, res, body) {
+const Methods = module.exports = ({config, db}) => async function (req, res, body) {
 
   const mollieClientKey = config.extensions.mollie.api_key
   const mollieClient = createMollieClient({ apiKey: mollieClientKey });
@@ -20,4 +20,4 @@ const paymentMethods = module.exports = ({config, db}) => async function (req, r
 
 }
 
-export default paymentMethods
+export default Methods

@@ -1,7 +1,7 @@
 const config = require('config')
 import OrderCommentData from "../helpers/OrderCommentData"
 
-export default async function (comment_data) {
+export default async (comment_data) => {
 
   const Magento2Client = require('magento2-rest-client').Magento2Client
   const client = Magento2Client(config.magento2.api);
@@ -13,12 +13,5 @@ export default async function (comment_data) {
   return module;
   })
   return client.orderComment.postOrderComment()
-  // client.orderComment.postOrderComment().then((result) => {
-  //   console.log(result)
-  //   return true
-  //   // apiStatus(res, result, 200); // just dump it to the browser, result = JSON object
-  // }).catch(err => {
-  //   return false
-  // })
-
+ 
 }

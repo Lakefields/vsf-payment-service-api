@@ -1,14 +1,22 @@
 import { Router } from 'express';
-import createOrder from './createOrder';
-import paymentMethods from './paymentMethods';
+import Orders from './Orders';
+import Methods from './Methods';
+import webhook from './webhook';
+import bodyParser from 'body-parser';
+
 module.exports = ({ config, db }) => {
   let api = Router();
 
-  // mount the createOrder resource
-  api.use('/create-order', createOrder({ config, db }))
+  api.use(bodyParser.urlencoded({ extended: true }));
 
   // mount the createOrder resource
-  api.use('/payment-methods', paymentMethods({ config, db }))
+  api.use('/order', Orders({ config, db }))
+
+  // mount the createOrder resource
+  api.use('/methods', Methods({ config, db }))
+
+  // mount the webhook resource
+  api.use('/webhook', webhook({ config, db }))
 
   // perhaps expose some API metadata at the root
   api.get('/', (req, res) => {
