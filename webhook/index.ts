@@ -1,5 +1,5 @@
 import { apiStatus, apiError } from '../../../../lib/util'
-import getPspOrder from '../getPspOrder'
+import getOrder from '../Orders/get/Order'
 
 const webhook = module.exports = ({config, db}) => async (req, res) => {
 
@@ -12,7 +12,7 @@ const webhook = module.exports = ({config, db}) => async (req, res) => {
       throw new Error(req.method + ' request method is not supported.')      
     }
 
-    const pspOrder = await getPspOrder(params.id)
+    const pspOrder = await getOrder(params.id)
     apiStatus(res, pspOrder, 200);
 
 
