@@ -1,6 +1,6 @@
 const config = require('config')
 
-export default async (order_id) => {
+const getBackendOrder = async (order_id) => {
 
   const Magento2Client = require('magento2-rest-client').Magento2Client
   const client = Magento2Client(config.magento2.api);
@@ -15,3 +15,5 @@ export default async (order_id) => {
   return client.order.getSingleOrder()
  
 }
+
+export default getBackendOrder

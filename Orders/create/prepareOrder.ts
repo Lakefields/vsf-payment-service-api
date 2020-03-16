@@ -1,7 +1,7 @@
 const config = require('config')
 import crypto from "crypto";
-import OrderLineTypes from "../../helpers/OrderLineTypes"
-import ProductsMapping from "../../helpers/ProductsMapping"
+import OrderLineTypes from "../helpers/OrderLineTypes"
+import ProductsMapping from "../helpers/ProductsMapping"
 import { Locale, PaymentMethod, OrderLineType } from '@mollie/api-client';
 
 export default (order: any, params: any) => {

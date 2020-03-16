@@ -1,7 +1,7 @@
 import { apiStatus, apiError } from '../../../../lib/util'
 import prepareOrder from './create/prepareOrder'
-import orderComment from '../backendSystem/orderComment'
-import getBackendOrder from '../backendSystem/getBackendOrder';
+import orderComment from '../backendSystem/Order/Comment'
+import getBackendOrder from '../backendSystem/Order/Get';
 import Order from './create/Order';
 
 const Orders = module.exports = ({config, db}) => async (req, res) => {

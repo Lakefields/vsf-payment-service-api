@@ -1,7 +1,7 @@
 const config = require('config')
 import OrderCommentData from "../helpers/OrderCommentData"
 
-export default async (comment_data) => {
+const orderComment = async (comment_data) => {
 
   const Magento2Client = require('magento2-rest-client').Magento2Client
   const client = Magento2Client(config.magento2.api);
@@ -15,3 +15,5 @@ export default async (comment_data) => {
   return client.orderComment.postOrderComment()
  
 }
+
+export default orderComment
