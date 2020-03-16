@@ -6,6 +6,7 @@
   "author": "Get.Noticed",
   "license": "MIT",
   "dependencies": {
+    "@mollie/api-client": "^3.1.0",
     "js-sha3": "^0.8.0"
   },
   "publishConfig": {
