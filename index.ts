@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import Orders from './Orders';
 import Methods from './Methods';
-import webhook from './webhook';
+import Webhook from './Webhook';
 import bodyParser from 'body-parser';
 
 module.exports = ({ config, db }) => {
@@ -9,14 +9,14 @@ module.exports = ({ config, db }) => {
 
   api.use(bodyParser.urlencoded({ extended: true }));
 
-  // mount the createOrder resource
+  // mount the Orders resource
   api.use('/order', Orders({ config, db }))
 
-  // mount the createOrder resource
+  // mount the Methods resource
   api.use('/methods', Methods({ config, db }))
 
-  // mount the webhook resource
-  api.use('/webhook', webhook({ config, db }))
+  // mount the Webhook resource
+  api.use('/webhook', Webhook({ config, db }))
 
   // perhaps expose some API metadata at the root
   api.get('/', (req, res) => {
