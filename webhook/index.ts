@@ -1,7 +1,7 @@
 import { apiStatus, apiError } from '../../../../lib/util'
 import getOrder from '../Orders/get/Order'
 
-const webhook = module.exports = ({config, db}) => async (req, res) => {
+const Webhook = module.exports = ({config, db}) => async (req, res) => {
 
   const params = req.body
   console.log(params)
@@ -21,4 +21,4 @@ const webhook = module.exports = ({config, db}) => async (req, res) => {
   }
 
 }
-export default webhook
+export default Webhook
