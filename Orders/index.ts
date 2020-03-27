@@ -32,16 +32,20 @@ const Orders = module.exports = ({config, db}) => async (req, res) => {
     apiStatus(res, setCheckoutUrl, 200);
 
   } catch (error) {
-    console.warn(error);
-    //collect orderComment data
     const orderCommentData = {
       order_id: params.order_id,
       order_comment: 'Payment could not be created: ' + error.message,
       status: 'canceled'
     }
-    const postOrderComment = await orderComment(orderCommentData)
-    apiError(res, error);
+    try {
+      const postOrderComment = await orderComment(orderCommentData)
+      console.warn(error);
+      apiError(res, error);  
+    } catch (error) {
+      console.warn(error);
+      apiError(res, error);  
+    }
   }
-
+ 
 }
 export default Orders
