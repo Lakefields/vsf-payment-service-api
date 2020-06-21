@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import Orders from './Orders';
 import Methods from './Methods';
+import Status from './Status';
 import Webhook from './Webhook';
 import bodyParser from 'body-parser';
 
@@ -14,6 +15,9 @@ module.exports = ({ config, db }) => {
 
   // mount the Methods resource
   api.use('/methods', Methods({ config, db }))
+
+  // mount the Status resource
+  api.use('/status', Status({ config, db }))
 
   // mount the Webhook resource
   api.use('/webhook', Webhook({ config, db }))

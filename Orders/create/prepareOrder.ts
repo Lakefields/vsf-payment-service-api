@@ -6,15 +6,19 @@ import { Locale, PaymentMethod, OrderLineType } from '@mollie/api-client';
 
 export default (order: any, params: any) => {
 
-  let sectret_key = config.extensions.mollie.api_key
+  let sectret_key = config.extensions.mollie.secret
   let algorithm = config.extensions.mollie.algorithm
 
   const locale: string = params.locale
   const paymentMethod: string = params.method
+  const paymentAdditionalData: object = params.additional_payment_data
+  const meta_order_id: Number = order.entity_id
+  const meta_increment_id: String = order.increment_id
+
   const order_metadata = {
-    order_id: order.entity_id,
-    increment_id: order.increment_id
-  }  
+    order_id: meta_order_id,
+    increment_id: meta_increment_id
+  } 
   let cipher = crypto.createCipher(algorithm, sectret_key)
   let encryptedOrderDetails = cipher.update(Object.values(order_metadata).join('-'),'utf8','hex')
   encryptedOrderDetails += cipher.final('hex');
@@ -72,7 +76,7 @@ export default (order: any, params: any) => {
     }
   })
 
-  const createOrderParams = {
+  let createOrderParams = {
     amount: {
       value: order.base_grand_total.toFixed(2),
       currency: order.order_currency_code,
@@ -107,6 +111,12 @@ export default (order: any, params: any) => {
     webhookUrl: config.extensions.mollie.webhook_url,
     method: PaymentMethod[paymentMethod],
     lines: orderLines
+  }
+
+  //add additional payment method details
+  createOrderParams = {
+    ...createOrderParams,
+    ...paymentAdditionalData
   }
 
   return createOrderParams

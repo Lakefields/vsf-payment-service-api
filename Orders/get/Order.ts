@@ -6,7 +6,12 @@ const getOrder = async (order_id: any) => {
     const mollieClientKey = config.extensions.mollie.api_key
     const mollieClient = createMollieClient({ apiKey: mollieClientKey });
 
-    return mollieClient.orders.get(order_id);    
+    try {
+      const order: Order = await mollieClient.orders.get(order_id);
+      return order
+    } catch (error) {
+      console.warn(error);
+    }
 
 }
 

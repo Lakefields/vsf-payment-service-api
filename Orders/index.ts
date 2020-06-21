@@ -28,7 +28,6 @@ const Orders = module.exports = ({config, db}) => async (req, res) => {
     }
     const postOrderComment = await orderComment(orderCommentData)
     const setCheckoutUrl = pspOrder._links.checkout.href
-    console.log(setCheckoutUrl)
     apiStatus(res, setCheckoutUrl, 200);
 
   } catch (error) {
