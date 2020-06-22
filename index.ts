@@ -2,6 +2,8 @@ import { Router } from 'express';
 import Orders from './Orders';
 import Methods from './Methods';
 import Status from './Status';
+import Token from './Token';
+import Transaction from './Transaction';
 import Webhook from './Webhook';
 import bodyParser from 'body-parser';
 
@@ -18,6 +20,12 @@ module.exports = ({ config, db }) => {
 
   // mount the Status resource
   api.use('/status', Status({ config, db }))
+
+  // mount the PaymentToken resource
+  api.use('/token', Token({ config, db }))
+
+  // mount the Transaction resource
+  api.use('/transaction', Transaction({ config, db }))
 
   // mount the Webhook resource
   api.use('/webhook', Webhook({ config, db }))
